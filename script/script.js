@@ -93,6 +93,22 @@ paidDelivery.addEventListener('click', function () {
     updateTotal()
 });
 
+// coupon
+couponButton.addEventListener('click', function () {
+    updateTotal()
+    code = couponCode.value;
+    couponCode.value = '';
+    if (code == 'stevekaku') {
+        afterTotal = (total.innerText - (total.innerText * .20));
+        
+        total.innerText = afterTotal;
+        bottomTotal.innerText = afterTotal;
+        
+    } else {
+        return;
+    }
+})
+
 // price
 function updateTotal() {
     const bestCost = Number(bestPrice.innerText);
@@ -103,18 +119,3 @@ function updateTotal() {
     total.innerText = grandTotal;
     bottomTotal.innerText = grandTotal;
 }
-
-// coupon
-couponButton.addEventListener('click', function () {
-    code = couponCode.value;
-    couponCode.value = '';
-    if (code == 'stevekaku') {
-        
-        grandTotal = (total.innerText - (total.innerText * .20));
-        
-        total.innerText = grandTotal;
-        bottomTotal.innerText = grandTotal;
-    } else {
-        return;
-    }
-})
