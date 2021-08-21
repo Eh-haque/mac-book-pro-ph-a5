@@ -80,4 +80,4 @@ function updateTotal() {
     const grandTotal = ramCost + storageCost + deliveryPrice + bestCost;
     total.innerText = grandTotal;
     bottomTotal.innerText = grandTotal;
-}
+};
