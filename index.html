@@ -5,50 +5,53 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Apple M1 iMac</title>
+    <!-- favIcon -->
+    <link rel="shortcut icon" href="images/potrait-of-steve-jobs.jpg" type="image/x-icon">
     <!-- tailwind css -->
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <!-- custom css -->
     <style>
         .selected{
-            border: 2px dotted red;
+            border: 2px solid #b3cadc;
             background-color: gray;
+            color: whitesmoke;
         }
     </style>
 </head>
 <body>
     <header></header>
 
-    <main>
-        <section class="container flex mx-auto my-16">
+    <main class="font:poppins">
+        <section class="container md:flex mx-auto my-16">
             <!-- image part -->
-            <div class="mx-8 w-1/2">
+            <div class="mx-8 md:w-1/2">
                 <img src="images/mac.png" alt="">
             </div>
             <!-- product part -->
-            <div class="mx-8 w-1/2">
+            <div class="mx-8 md:w-1/2">
                 <h2 class="text-3xl mb-5 font-bold">Customize your Blue 24-inch IMac with Apple M1 chip.</h2>
                 <p class="text-xl">Apple M1 chip with 8-core CPU with 4 performance cores and 4 efficiency cores, 7-core CPU, and 16-core Neural Engine 8GB unified memory 256GB SSD storage Two Thunderbolt/USB 4 ports Magic Mouse Keyboard - US English.</p>
                 <!-- memory -->
                 <div class="my-8">
                     <h5 class="font-bold mb-1">Memory</h5>
-                    <button id="ram-8gb" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">8GB unified memory</button>
-                    <button id="ram-16gb" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">16GB unified memory</button>
+                    <button id="ram-8gb" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded mb-2 focus:ring-2 focus:ring-blue-600">8GB unified memory</button>
+                    <button id="ram-16gb" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded focus:ring-2 focus:ring-blue-600">16GB unified memory</button>
                 </div>
                 <!-- storage -->
                 <div>
                     <h5 class="font-bold mb-1">Storage</h5>
-                    <button id="storage-256gb" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">256GB SSD storage</button>
-                    <button id="storage-512gb" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">512GB SSD storage</button>
-                    <button id="storage-1tb" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">1TB SSD storage</button>
+                    <button id="storage-256gb" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded focus:ring-2 focus:ring-blue-600">256GB SSD storage</button>
+                    <button id="storage-512gb" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded focus:ring-2 focus:ring-blue-600 my-2">512GB SSD storage</button>
+                    <button id="storage-1tb" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded focus:ring-2 focus:ring-blue-600">1TB SSD storage</button>
                 </div>
                 <!-- delivery option -->
                 <div class="my-8">
                     <h5 class="font-bold mb-1">Choose your delivery option</h5>
-                    <button id="free-delivery" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">Friday, Aug 25 FREE Prime Delivery</button>
-                    <button id="paid-delivery" class="bg-transparent hover:bg-gray-500 font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded">Friday, Aug 21 Delivery charge $20</button>
+                    <button id="free-delivery" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded focus:ring-2 focus:ring-blue-600 mb-2">Friday, Aug 25 FREE Prime Delivery</button>
+                    <button id="paid-delivery" class="bg-transparent hover:bg-black font-semibold hover:text-white p-1 border border-gray-500 hover:border-transparent rounded focus:ring-2 focus:ring-blue-600">Friday, Aug 21 Delivery charge $20</button>
                 </div>
                 <!-- price part  -->
-                <div class="font-bold w-1/2">
+                <div class="font-bold md:w-1/2">
                     <div class="flex justify-between my-1">
                         <h5>Best Price</h5>
                         <h5>$<span id="best-Price">1299</span></h5>
@@ -72,8 +75,10 @@
 
                     <div class="mt-4">
                         <h5 class="font-medium">Add promo code</h5>
-                        <input class="border rounded py-1 px-4" type="text" name="" id="coupon-code">
-                        <button id="coupon-button" class="bg-red-500 text-white py-1 px-4 rounded">Apply</button>
+                        <div class="flex justify-between my-2">
+                            <input class="border rounded py-1 md:px-4" type="text" name="" id="coupon-code">
+                            <button onclick="addCoupon()" id="coupon-button" class="bg-red-500 text-white hover:bg-gray-100 hover:text-black px-4 border border-gray-400 rounded shadow">Apply</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -81,11 +86,17 @@
         </section>
     </main>
 
-    <footer class="container border-t-2 mx-auto">
-        <h2 class="text-center text-3xl my-4">Total : $<span id="bottom-total">1299</span></h2>
+    <footer class="container border-t-2 mx-auto text-center">
+        <h2 class="text-3xl my-4">Total : $<span id="bottom-total">1299</span></h2>
+        <p>&COPY; Ehtisam Haq</p>
     </footer>
 
     <!-- javascript -->
     <script src="script/script.js"></script>
 </body>
 </html>
+
+
+
+<!-- https://github.com/programming-hero-web-course2/mac-book-pro-Eh-haque -->
+<!-- https://app.netlify.com/sites/naughty-tesla-7979cf/overview -->
