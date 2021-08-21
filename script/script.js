@@ -22,41 +22,58 @@ const bestPrice = document.getElementById('best-Price');
 const total = document.getElementById('total-price');
 const bottomTotal = document.getElementById('bottom-total');
 
-// ram price update
-ram8gb.addEventListener('click', function () {
-    ramPrice.innerText = '0';
-    updateTotal()
-});
-ram16gb.addEventListener('click', function () {
-    ramPrice.innerText = '180';
-    updateTotal()
-});
-
-// storage price update
-storage256gb.addEventListener('click', function () {
-    storagePrice.innerText = '0';
-    updateTotal()
-});
-storage512gb.addEventListener('click', function () {
-    storagePrice.innerText = '100';
-    updateTotal()
-});
-storage1tb.addEventListener('click', function () {
-    storagePrice.innerText = '180';
-    updateTotal()
+// memory
+ram8gb.addEventListener('click',function(){
+    updateCost('ram-price',0);
+    updateTotal();
+   });
+ram16gb.addEventListener('click',function(){
+    updateCost('ram-price',180)
+    updateTotal();
 });
 
-// delivery price update
-freeDelivery.addEventListener('click', function () {
-    deliveryCost.innerText = '0';
-    updateTotal()
+   // storage
+storage256gb.addEventListener('click',function(){
+   updateCost('storage-price',0)
+   updateTotal();
 });
-paidDelivery.addEventListener('click', function () {
-    deliveryCost.innerText = '20';
-    updateTotal()
+storage512gb.addEventListener('click',function(){
+    updateCost('storage-price',100)
+    updateTotal();
+});
+storage1tb.addEventListener('click',function(){
+    updateCost('storage-price',180)
+    updateTotal();
+});
+   
+// delivery
+freeDelivery.addEventListener('click',function(){
+    updateCost('delivery-cost',0)
+    updateTotal();
+});
+paidDelivery.addEventListener('click',function(){
+    updateCost('delivery-cost',20)
+    updateTotal();
 });
 
-// coupon code function
+// function fot update cost
+function updateCost(id,price){
+    const updatePrice = document.getElementById(id);
+    updatePrice.innerText = price;
+};
+
+// function for total price
+function updateTotal() {
+    const bestCost = Number(bestPrice.innerText);
+    const ramCost = Number(ramPrice.innerText);
+    const storageCost = Number(storagePrice.innerText);
+    const deliveryPrice = Number(deliveryCost.innerText );
+    const grandTotal = ramCost + storageCost + deliveryPrice + bestCost;
+    total.innerText = grandTotal;
+    bottomTotal.innerText = grandTotal;
+};
+
+// function for coupon code
 function addCoupon() {
     updateTotal()
     code = couponCode.value;
@@ -71,13 +88,4 @@ function addCoupon() {
     }
 };
 
-// total price function
-function updateTotal() {
-    const bestCost = Number(bestPrice.innerText);
-    const ramCost = Number(ramPrice.innerText);
-    const storageCost = Number(storagePrice.innerText);
-    const deliveryPrice = Number(deliveryCost.innerText );
-    const grandTotal = ramCost + storageCost + deliveryPrice + bestCost;
-    total.innerText = grandTotal;
-    bottomTotal.innerText = grandTotal;
-};
+// the end
